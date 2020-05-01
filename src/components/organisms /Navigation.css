@@ -1,0 +1,15 @@
+
+.container-nav {
+    justify-content: center;
+}
+
+.container-ul {
+    list-style-type: none;
+    display: flex;
+    list-style-position: inside;
+    justify-content: center;
+}
+
+li {
+    margin-right: 1rem;
+}

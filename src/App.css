@@ -1,11 +1,15 @@
-.App {
-  text-align: center;
+:root {
+  --color-primary: #282c34;
+  --color-background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.theme-switch {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: var(--color-background);
+  color: var(--color-primary);
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
