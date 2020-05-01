@@ -10,6 +10,16 @@
   color: var(--color-primary);
 }
 
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

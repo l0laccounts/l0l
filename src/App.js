@@ -9,24 +9,55 @@ import './App.css';
 
 
 function App() {
-    const [darkMode, setDarkMode] = useState(false);
-    useTheme(darkMode ? "dark" : "light")
+    const [darkMode, setDarkMode] = React.useState(getInitialMode());
+
+    React.useEffect(() => {
+        localStorage.setItem('dark', JSON.stringify(darkMode))
+    }, [darkMode])
+
+    function getInitialMode() {
+        const isReturningUser = "dark" in localStorage;
+        const savedMode = JSON.parse(localStorage.getItem('dark'));
+        const userPrefersDark = getPrefColorSchme();
+        // if mode was saved -> dark / light
+        if (isReturningUser) {
+            return savedMode
+            // if prefered colour scheme is dark -> dark
+        } else if (userPrefersDark){
+            return true
+        } else {
+            // otherwise -> light
+            return false
+        }
+    }
+
+    function getPrefColorSchme () {
+        if (!window.matchMedia) return;
+
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
 
     return (
     <div className="App theme-switch">
-        <input
-            id="theme-toggler"
-            type="checkbox"
-            checked={darkMode}
-            onChange={e => setDarkMode(e.target.checked)}/>
-        <BrowserRouter>
-            <Navigation/>
-            <Switch>
-                <Route path={"/pageRandom"} component={pageRandom}/>
-                <Route path={"/pageLinkGenerator"} component={pageLinkGenerator}/>
-                <Route path={"/pageImageUpload"} component={pageImageUpload}/>
-            </Switch>
-        </BrowserRouter>
+        <div className={darkMode ? "dark-mode" : "light-mode"}>
+            <span className="toggle">
+            <input
+                checked={darkMode}
+                onChange={() => setDarkMode(prevMode => !prevMode)}
+                id="checkbox"
+                className="checkbox"
+                type="checkbox"/>
+                <label htmlFor="checkbox" />
+        </span>
+            <BrowserRouter>
+                <Navigation/>
+                <Switch>
+                    <Route path={"/pageRandom"} component={pageRandom}/>
+                    <Route path={"/pageLinkGenerator"} component={pageLinkGenerator}/>
+                    <Route path={"/pageImageUpload"} component={pageImageUpload}/>
+                </Switch>
+            </BrowserRouter>
+        </div>
     </div>
   );
 }
