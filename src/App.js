@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import {pageRandom} from './pages/pageRandom'
-import {Navigation} from './components/organisms /Navigation'
-import {pageLinkGenerator} from './pages/pageLinkGenerator'
-import {pageImageUpload} from './pages/pageImageUpload'
-import {useTheme} from './useTheme/useTheme'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { pageRandom } from './pages/pageRandom'
+import { Navigation } from './components/organisms /Navigation'
+import { pageLinkGenerator } from './pages/pageLinkGenerator'
+import { pageImageUpload } from './pages/pageImageUpload'
+import { pageTextInput } from './pages/pageTextInput'
 import './App.css';
 
 
 function App() {
-    const [darkMode, setDarkMode] = React.useState(getInitialMode());
+    const [darkMode, setDarkMode] = useState(getInitialMode());
 
     React.useEffect(() => {
         localStorage.setItem('dark', JSON.stringify(darkMode))
@@ -40,23 +40,26 @@ function App() {
     return (
     <div className="App theme-switch">
         <div className={darkMode ? "dark-mode" : "light-mode"}>
-            <span className="toggle">
-            <input
-                checked={darkMode}
-                onChange={() => setDarkMode(prevMode => !prevMode)}
-                id="checkbox"
-                className="checkbox"
-                type="checkbox"/>
-                <label htmlFor="checkbox" />
-        </span>
             <BrowserRouter>
                 <Navigation/>
                 <Switch>
                     <Route path={"/pageRandom"} component={pageRandom}/>
                     <Route path={"/pageLinkGenerator"} component={pageLinkGenerator}/>
                     <Route path={"/pageImageUpload"} component={pageImageUpload}/>
+                    <Route path={"./pageTextInput"} component={pageTextInput}/>
                 </Switch>
             </BrowserRouter>
+            <div className="toggle-container">
+                <span className="toggle">
+                    <input
+                        checked={darkMode}
+                        onChange={() => setDarkMode(prevMode => !prevMode)}
+                        id="checkbox"
+                        className="checkbox"
+                        type="checkbox"/>
+                        <label htmlFor="checkbox" />
+                </span>
+            </div>
         </div>
     </div>
   );

@@ -22,6 +22,11 @@ export const Navigation = () => (
                     Image Upload
                 </NavLink>
             </li>
+            <li>
+                <NavLink to='/pageInput'>
+                    Input
+                </NavLink>
+            </li>
         </ul>
     </div>
 )
