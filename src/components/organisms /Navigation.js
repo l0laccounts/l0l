@@ -23,8 +23,8 @@ export const Navigation = () => (
                 </NavLink>
             </li>
             <li>
-                <NavLink to='/pageInput'>
-                    Input
+                <NavLink to='/pageTest'>
+                    pageTest
                 </NavLink>
             </li>
         </ul>

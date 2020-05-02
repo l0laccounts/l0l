@@ -1,13 +1,11 @@
-import React from 'react'
-import { TextInput } from "../components/TextInput";
+import React from 'react';
+import { Input } from '../components/Input';
 import './page.css'
 
 export const pageTextInput = () => {
     return (
         <div className='page'>
-            <div>
-                <TextInput/>
-            </div>
+            <Input/>
         </div>
     )
 }

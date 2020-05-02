@@ -14,8 +14,9 @@ function useInputValue(defaultValue = '') {
     }
 }
 
-export const TextInput = () => {
+export const Input = () => {
     const input = useInputValue('hello')
+
     return (
         <form>
             <input {...input.bind}
@@ -23,4 +24,5 @@ export const TextInput = () => {
             <button type="submit">submit</button>
         </form>
     )
+
 }

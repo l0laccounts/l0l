@@ -5,6 +5,7 @@ import { Navigation } from './components/organisms /Navigation'
 import { pageLinkGenerator } from './pages/pageLinkGenerator'
 import { pageImageUpload } from './pages/pageImageUpload'
 import { pageTextInput } from './pages/pageTextInput'
+import { pageTest } from './pages/pageTest'
 import './App.css';
 
 
@@ -46,7 +47,7 @@ function App() {
                     <Route path={"/pageRandom"} component={pageRandom}/>
                     <Route path={"/pageLinkGenerator"} component={pageLinkGenerator}/>
                     <Route path={"/pageImageUpload"} component={pageImageUpload}/>
-                    <Route path={"./pageTextInput"} component={pageTextInput}/>
+                    <Route path={"/pageTest"} component={pageTest}/>
                 </Switch>
             </BrowserRouter>
             <div className="toggle-container">
